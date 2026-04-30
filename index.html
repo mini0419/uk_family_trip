@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 영국 가족 여행 일정</title>
+    <style>
+        :root {
+            --navy: #0f1b4c; --blue: #3157ff; --red: #e43d4f; --coral: #ff6b6b; --sand: #fff7ea;
+            --ink: #111827; --muted: #667085; --line: rgba(15, 23, 42, 0.08);
+            --card: rgba(255,255,255,0.82); --shadow: 0 24px 70px rgba(31, 41, 55, 0.14); --radius: 28px;
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; color: var(--ink); font-family: 'Pretendard','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background: radial-gradient(circle at 14% 4%, rgba(255,107,107,.20), transparent 26%), radial-gradient(circle at 86% 8%, rgba(49,87,255,.18), transparent 30%), linear-gradient(180deg,#f8f7ff 0%,#f3f7fb 42%,#f8fafc 100%); min-height: 100vh; }
+        body::before { content:''; position:fixed; inset:0; pointer-events:none; background-image:linear-gradient(rgba(15,23,42,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(15,23,42,.035) 1px,transparent 1px); background-size:44px 44px; mask-image:linear-gradient(to bottom,black,transparent 75%); }
+        .fixed-header { position: sticky; top: 0; z-index: 1000; background: rgba(248,250,252,.72); backdrop-filter: blur(22px) saturate(1.25); border-bottom: 1px solid rgba(255,255,255,.6); box-shadow: 0 14px 36px rgba(15,23,42,.08); }
+        header { max-width:1180px; margin:0 auto; padding:18px 20px 10px; color:var(--navy); text-align:left; display:flex; justify-content:space-between; gap:14px; align-items:flex-end; }
+        header h1 { margin:0; font-size:clamp(1.35rem,2.4vw,2rem); letter-spacing:-.055em; font-weight:950; }
+        header p { margin:6px 0 0; font-size:.92rem; color:var(--muted); font-weight:700; }
+        header::after { content:'Family Trip'; color:white; background:linear-gradient(135deg,var(--navy),var(--blue)); padding:9px 14px; border-radius:999px; font-size:.82rem; font-weight:900; box-shadow:0 12px 28px rgba(49,87,255,.22); white-space:nowrap; }
+        .city-tabs-container,.date-tabs-container { max-width:1180px; margin:0 auto; padding-left:20px; padding-right:20px; }
+        .city-tabs-container { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; padding-top:10px; padding-bottom:10px; }
+        .city-btn,.date-btn { border:0; cursor:pointer; font-family:inherit; transition:transform .2s ease,box-shadow .2s ease,background .2s ease; }
+        .city-btn { position:relative; overflow:hidden; border-radius:20px; padding:15px 18px; background:rgba(255,255,255,.66); color:var(--navy); font-size:1rem; font-weight:950; border:1px solid rgba(255,255,255,.7); box-shadow:0 8px 22px rgba(15,23,42,.06); }
+        .city-btn.active { color:white; background:linear-gradient(135deg,var(--navy),#243c96 55%,var(--blue)); box-shadow:0 18px 38px rgba(49,87,255,.26); transform:translateY(-1px); }
+        .city-btn.active::before { content:''; position:absolute; width:130px; height:130px; right:-48px; top:-70px; border-radius:999px; background:rgba(255,255,255,.16); }
+        .date-tabs-container { overflow-x:auto; white-space:nowrap; padding-top:4px; padding-bottom:14px; -ms-overflow-style:none; scrollbar-width:none; }
+        .date-tabs-container::-webkit-scrollbar { display:none; } .date-group{display:none;} .date-group.active{display:block;}
+        .date-btn { display:inline-flex; align-items:center; justify-content:center; min-height:42px; padding:10px 16px; margin-right:8px; background:rgba(255,255,255,.72); border:1px solid rgba(15,23,42,.07); border-radius:999px; color:#344054; font-size:.9rem; font-weight:900; box-shadow:0 8px 20px rgba(15,23,42,.05); }
+        .date-btn.active { background:linear-gradient(135deg,var(--red),var(--coral)); color:white; border-color:transparent; box-shadow:0 14px 28px rgba(228,61,79,.25); }
+        .content { width:min(100% - 32px,1180px); margin:0 auto; padding:26px 0 84px; }
+        .city-section{display:none; animation:fadeUp .35s ease both;} .city-section.active{display:block;} @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+        .hero-card,.info-card,.schedule-card { background:var(--card); border:1px solid rgba(255,255,255,.72); box-shadow:var(--shadow); border-radius:var(--radius); overflow:hidden; backdrop-filter:blur(16px); }
+        .hero-card { position:relative; min-height:360px; margin-bottom:26px; padding:30px; display:grid; grid-template-columns:.95fr 1.05fr; gap:24px; align-items:stretch; background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.62)),radial-gradient(circle at 10% 0%,rgba(255,107,107,.16),transparent 34%),radial-gradient(circle at 80% 20%,rgba(49,87,255,.14),transparent 34%); }
+        .hero-copy{display:flex; flex-direction:column; justify-content:center; min-width:0;} .hero-copy h2{margin:0 0 12px; color:var(--navy); font-size:clamp(2.2rem,6vw,4.5rem); line-height:.92; letter-spacing:-.08em; font-weight:1000;} .hero-copy p{margin:0; color:var(--muted); line-height:1.7; font-size:1.05rem; font-weight:650; max-width:520px;}
+        .hero-badges{display:flex; flex-wrap:wrap; gap:9px; margin-top:22px;} .badge{background:rgba(49,87,255,.08); color:var(--navy); border:1px solid rgba(49,87,255,.08); border-radius:999px; padding:9px 13px; font-size:.84rem; font-weight:950;}
+        .map-frame{width:100%; min-height:250px; border:0; display:block; background:#dde5ef; filter:saturate(.9) contrast(.98);} .hero-card>.map-frame{border-radius:24px; min-height:300px; box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 18px 40px rgba(15,23,42,.12);}
+        .section-label{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin:34px 4px 14px;} .section-label h2{margin:0; color:var(--navy); font-size:clamp(1.3rem,2vw,1.75rem); letter-spacing:-.04em;} .section-label small{color:var(--muted); font-weight:800;}
+        .info-card{display:grid; grid-template-columns:.9fr 1.1fr; min-height:260px; margin-bottom:34px;} .info-card .map-frame{min-height:260px;}
+        .address-info{position:relative; padding:34px; display:flex; flex-direction:column; justify-content:center; background:linear-gradient(135deg,rgba(15,27,76,.96),rgba(49,87,255,.84)); color:white;} .eyebrow{margin:0 0 10px; font-size:.78rem; font-weight:950; color:rgba(255,255,255,.74); text-transform:uppercase; letter-spacing:.12em;} .address-info h3{margin:0 0 10px; font-size:1.65rem; color:white; letter-spacing:-.045em;} .address-info p{margin:0 0 18px; font-size:1.02rem; font-weight:750; color:rgba(255,255,255,.86); line-height:1.55;} .map-link{width:fit-content; color:var(--navy); background:white; border-radius:999px; padding:11px 15px; font-size:.88rem; font-weight:950; text-decoration:none; box-shadow:0 12px 26px rgba(0,0,0,.14);}
+        .day-section{margin-bottom:28px; scroll-margin-top:190px;} .date-title{font-size:clamp(1.28rem,2vw,1.65rem); font-weight:1000; color:var(--navy); margin:0 0 12px; display:flex; align-items:center; gap:10px; letter-spacing:-.05em;} .date-title span{font-size:.78rem; letter-spacing:0; background:var(--sand); color:#9a3412; border:1px solid rgba(251,146,60,.18); padding:6px 10px; border-radius:999px;}
+        .schedule-card{padding:10px;} .spot-item{position:relative; display:grid; grid-template-columns:minmax(0,1fr) 310px; gap:14px; padding:10px; border-bottom:1px solid var(--line); border-radius:22px; transition:transform .2s ease,background .2s ease,box-shadow .2s ease;} .spot-item:hover{transform:translateY(-2px); background:rgba(255,255,255,.78); box-shadow:0 14px 30px rgba(15,23,42,.08);} .spot-item:last-child{border-bottom:0;}
+        .spot-copy{display:grid; grid-template-columns:86px minmax(0,1fr); gap:16px; padding:18px 10px 18px 14px; align-items:start;} .time-box{font-weight:1000; color:var(--red); font-size:.92rem; text-align:center;} .time-box em{display:inline-flex; min-width:62px; justify-content:center; background:#fff1f3; border:1px solid rgba(228,61,79,.12); border-radius:999px; padding:9px 10px; font-style:normal; box-shadow:0 8px 18px rgba(228,61,79,.08);} .desc-box{border-left:0; padding-left:0;} .desc-box strong{display:block; font-size:1.16rem; margin-bottom:8px; color:#101828; letter-spacing:-.035em;} .desc-box p{margin:0; font-size:.94rem; color:var(--muted); line-height:1.62; font-weight:580;}
+        .spot-map{overflow:hidden; border-radius:18px; min-height:168px; border:1px solid rgba(15,23,42,.08);} .spot-map iframe{height:100%; min-height:168px;}
+        .map-fab{position:fixed; right:20px; bottom:20px; min-width:76px; height:56px; border-radius:999px; background:linear-gradient(135deg,var(--navy),var(--blue)); color:white; display:flex; align-items:center; justify-content:center; box-shadow:0 18px 38px rgba(49,87,255,.32); text-decoration:none; font-size:.84rem; font-weight:950; z-index:1000; padding:0 16px; border:1px solid rgba(255,255,255,.26);}
+        @media (max-width:800px){ header{padding:14px 16px 8px; align-items:flex-start;} header::after{display:none;} .city-tabs-container,.date-tabs-container{padding-left:16px;padding-right:16px;} .city-tabs-container{gap:8px;} .city-btn{padding:13px 12px;border-radius:17px;} .date-btn{min-height:39px;padding:9px 14px;font-size:.85rem;} .content{width:min(100% - 24px,560px);padding-top:18px;} .hero-card{grid-template-columns:1fr;padding:22px;min-height:unset;border-radius:26px;} .hero-card>.map-frame{min-height:220px;} .info-card{grid-template-columns:1fr;} .info-card .map-frame{min-height:210px;} .address-info{padding:26px;} .spot-item{grid-template-columns:1fr;gap:8px;} .spot-copy{grid-template-columns:72px 1fr;padding:14px 6px 10px;} .spot-map,.spot-map iframe{min-height:190px;} .section-label{margin-top:26px;} }
+        .city-icons {
+            display: grid;
+            gap: 22px;
+            align-items: end;
+        }
+        .city-icon-card { text-align: center; }
+        .city-circle {
+            width: min(100%, 190px);
+            aspect-ratio: 1 / 1;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #cdefff, #f7f2d7);
+            border: 10px solid rgba(224, 228, 246, 0.9);
+            box-shadow: 0 15px 35px rgba(42, 49, 92, 0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(3rem, 8vw, 5.6rem);
+        }
+        .city-icon-card strong {
+            display: block;
+            color: #121846;
+            font-size: 1.35rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+        }
+        .city-icon-card small {
+            display: block;
+            margin-top: 3px;
+            color: #687083;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        @media (max-width: 720px) {
+            .trip-hero { grid-template-columns: 1fr; padding: 26px 20px; }
+            .city-icons { gap: 14px; }
+            .city-circle { border-width: 7px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="fixed-header">
+    <header>
+        <h1>🇬🇧 UK Family Trip 2026</h1>
+        <p>여행 일정</p>
+    </header>
+
+    <div class="city-tabs-container">
+        <button class="city-btn active" data-city="london" onclick="switchCity('london')">London</button>
+        <button class="city-btn" data-city="york" onclick="switchCity('york')">York</button>
+    </div>
+
+    <div class="date-tabs-container">
+        <div class="date-group active" data-city="london">
+            <button class="date-btn active" onclick="scrollToDay('day11')">7/11 (토)</button>
+            <button class="date-btn" onclick="scrollToDay('day12')">7/12 (일)</button>
+            <button class="date-btn" onclick="scrollToDay('day13')">7/13 (월)</button>
+        </div>
+        <div class="date-group" data-city="york">
+            <button class="date-btn active" onclick="scrollToDay('day14')">7/14 (화)</button>
+            <button class="date-btn" onclick="scrollToDay('day15')">7/15 (수)</button>
+            <button class="date-btn" onclick="scrollToDay('day16')">7/16 (목)</button>
+            <button class="date-btn" onclick="scrollToDay('day17')">7/17 (금)</button>
+            <button class="date-btn" onclick="scrollToDay('day18')">7/18 (토)</button>
+            <button class="date-btn" onclick="scrollToDay('day19')">7/19 (일)</button>
+            <button class="date-btn" onclick="scrollToDay('day20')">7/20 (월)</button>
+            <button class="date-btn" onclick="scrollToDay('day21')">7/21 (화)</button>
+        </div>
+    </div>
+</div>
+
+<main class="content">
+    <section id="london" class="city-section active">
+        <div class="hero-card">
+            <div class="hero-copy">
+                <h2>London 일정</h2>
+                <p>준비물: 열린 마음, 체력</p>
+                <div class="hero-badges">
+                    <span class="badge">7/11–7/13</span>
+                    <span class="badge">Afternoon Tea</span>
+                    <span class="badge">Harry Potter</span>
+                </div>
+            </div>
+            <div class="city-icons" aria-label="여행 도시 아이콘">
+              <div class="city-icon-card">
+                  <div class="city-circle" aria-hidden="true">🎡</div>
+                  <strong>런던</strong>
+                  <small>London</small>
+              </div>
+          </div>
+        </div>
+
+        <div class="section-label">
+            <h2>🏠 숙소 정보</h2>
+            <small>Aldgate East 역에서 도보 10분</small>
+        </div>
+        <div class="info-card">
+            <iframe class="map-frame" loading="lazy" <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.924686334721!2d-0.06206869999999999!3d51.514597699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603332e9002c1%3A0x56de43b3ab0ca851!2s158%20Commercial%20Rd%2C%20London%20E1%201NL!5e0!3m2!1sen!2suk!4v1777393589008!5m2!1sen!2suk" ></iframe>
+            <div class="address-info">
+                <p class="eyebrow">London Stay</p>
+                <h3>런던 숙소</h3>
+                <p>158 Commercial Rd, London E1 1JW</p>
+                <a class="map-link" href="https://maps.app.goo.gl/oFH2qkixPRkVYyYB9" target="_blank">구글 지도에서 크게 보기 ↗</a>
+            </div>
+        </div>
+
+        <div class="section-label"><h2>🗓 상세 일정</h2></div>
+
+        <section id="day11" class="day-section" data-city="london">
+            <div class="date-title">7월 11일 <span>London</span></div>
+            <div class="schedule-card">
+                <article class="spot-item">
+                    <div class="spot-copy">
+			<div class="time-box"><em>14:20</em></div>
+			<div class="desc-box">
+				<strong>히스로 공항 도착 및 숙소로 이동</strong>
+				<p>Elizabeth 라인 Abbey Wood 행</p>
+				<p>Heathrow Terminals 2 & 3 → Whitechapel (45분)</p>
+				<p>역에서 도보 10분</p>
+			</div>
+		    </div>
+                    <div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=Heathrow%20Airport&output=embed"></iframe></div>
+                </article>
+                <article class="spot-item">
+                    <div class="spot-copy">
+				<div class="time-box"><em>16:00</em></div>
+				<div class="desc-box">
+					<strong>숙소 체크인 및 휴식</strong>
+					<p>근처 카페나 맥도날드에서 간단히 저녁 먹으면서 체력 회복</p>
+					<p>6시쯤 나가기</p>
+				</div>
+		    </div>
+                    <div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=158%20Commercial%20Rd%2C%20London%20E1%201JW&output=embed"></iframe></div>
+                </article>
+                <article class="spot-item">
+                    <div class="spot-copy"><div class="time-box"><em>19:30</em></div><div class="desc-box"><strong>오페라의 유령</strong><p>District 라인 Richmond via Victoria 행</p><p>Aldgate East → Embankment (12분)</p><p>도보 15분</p></div></div>
+                    <div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.2708801338385!2d-0.13443792371458263!3d51.50824621064197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604d1a21e9f5b%3A0x24a8a42d999cafaf!2sHis%20Majesty&#39;s%20Theatre!5e0!3m2!1sen!2suk!4v1777466781581!5m2!1sen!2suk"></iframe></div>
+                </article>
+                <article class="spot-item">
+                    <div class="spot-copy"><div class="time-box"><em>밤</em></div><div class="desc-box"><strong>Big Ben + London Eye 야경</strong><p>극장에서 도보 20분</p><p>숙소까지 지하철  대략 30분</p><p>District 라인 Upminster 행</p><p>Westminster → Aldgate East (12분)</p></div></div>
+                    <div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.2708801338385!2d-0.13443792371458263!3d51.50824621064197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604d1a21e9f5b%3A0x24a8a42d999cafaf!2sHis%20Majesty&#39;s%20Theatre!5e0!3m2!1sen!2suk!4v1777466781581!5m2!1sen!2suk"></iframe></div>
+                </article>
+            </div>
+        </section>
+
+        <section id="day12" class="day-section" data-city="london">
+            <div class="date-title">7월 12일 <span>London</span></div>
+            <div class="schedule-card">
+                <article class="spot-item"><div class="spot-copy"><div class="time-box"><em>12:00</em></div><div class="desc-box"><strong>Afternoon Tea</strong><p>먹고 나서 Hype Park 산책</p></div></div><div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=Westminster%20London&output=embed"></iframe></div></article>
+                <article class="spot-item"><div class="spot-copy"><div class="time-box"><em>15:00</em></div><div class="desc-box"><strong>The National Gallery</strong><p>모네 수련, 고흐 해바라기 있음</p><p>opt 1. 숙소로 가서 휴식</p><p>opt 2. 미술관 보고 바로 밥 먹으러 가기</p></div></div><div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=Afternoon%20Tea%20London&output=embed"></iframe></div></article>
+             	<article class="spot-item">
+                    <div class="spot-copy"><div class="time-box"><em>19:30</em></div><div class="desc-box"><strong>Flat Iron에서 저녁 식사</strong><p>typical British Steak house</p><p>숙소에서 도보 35분</p></div></div>
+                    <div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.985385767999!2d-0.09183980642089844!3d51.50417640000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603b9680dd387%3A0x5510fb4782ca0b0e!2sFlat%20Iron%20London%20Bridge!5e0!3m2!1sen!2suk!4v1777403019243!5m2!1sen!2suk"></iframe></div>
+                </article>
+		<article class="spot-item">
+                    <div class="spot-copy"><div class="time-box"><em>밤</em></div><div class="desc-box"><strong>타워브릿지 야경 + 산책</strong><p>타워브릿지 →(도보 30분)→ 밀레니엄 브릿지 →(도보 30분)→ 숙소</p></div></div>
+                    <div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9932.61495420053!2d-0.0888392932149637!3d51.51039542654155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604abcc128291%3A0xbd5ceafc2f514e1c!2sMillennium%20Bridge!5e0!3m2!1sen!2suk!4v1777403157076!5m2!1sen!2suk"></iframe></div>
+                </article>
+            </div>
+        </section>
+
+        <section id="day13" class="day-section" data-city="london">
+            <div class="date-title">7월 13일 <span>London → York</span></div>
+            <div class="schedule-card">
+                <article class="spot-item"><div class="spot-copy"><div class="time-box"><em>오전</em></div><div class="desc-box"><strong>대영도서관 및 킹스크로스역 9 3/4 승강장</strong><p>11시 숙소 체크아웃</p><p>소호 한인마트 들려서 김치랑 라면 사기</p></div></div><div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=King's%20Cross%20Station%20Platform%209%203%2F4&output=embed"></iframe></div></article>
+                <article class="spot-item"><div class="spot-copy"><div class="time-box"><em>15:00</em></div><div class="desc-box"><strong>요크로 이동</strong><p>요크행 기차 탑승</p><p>대영도서관 및 킹스크로스역 9 3/4 승강장</p></div></div><div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=York%20Railway%20Station&output=embed"></iframe></div></article>
+                <article class="spot-item">
+			<div class="spot-copy">
+				<div class="time-box"><em>17:00</em></div>
+				<div class="desc-box">
+					<strong>숙소 체크인 및 휴식</strong>
+					<p>차 픽업</p>
+					<p>장보고 저녁 해 먹기</p>
+				</div>
+			</div>
+			<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d293.4732757089443!2d-1.0781969!3d53.9533051!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487931ac493dc9d1%3A0x8e1b6188420b080c!2s13%20Browney%20Croft%2C%20York%20YO10%204BX!5e0!3m2!1sen!2suk!4v1777393677728!5m2!1sen!2suk"></iframe></div>
+		</article>
+            </div>
+        </section>
+    </section>
+
+    <section id="york" class="city-section">
+        <div class="hero-card">
+            <div class="hero-copy">
+                <h2>York 일정</h2>
+                <p>준비물: 등산화, 등산복, formal한 복장, 즐거운 마음</p>
+                <div class="hero-badges">
+                    <span class="badge">7/14–7/21</span>
+                    <span class="badge">Peter Rabbit</span>
+                    <span class="badge">Wildlife</span>
+		    <span class="badge">Hiking</span>
+                    <span class="badge">Graduation</span>
+                </div>
+            </div>
+            <div class="city-icons" aria-label="여행 도시 아이콘">
+              <div class="city-icon-card">
+                  <div class="city-circle" aria-hidden="true">🏵️</div>
+                  <strong>요크</strong>
+                  <small>York</small>
+              </div>
+          </div>
+        </div>
+
+        <div class="section-label">
+            <h2>🏠 숙소 정보</h2>
+            <small>기차역에서 도보 25분, 학교까지 도보 30분</small>
+        </div>
+        <div class="info-card">
+            <iframe class="map-frame" loading="lazy" <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d293.4732757089443!2d-1.0781969!3d53.9533051!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487931ac493dc9d1%3A0x8e1b6188420b080c!2s13%20Browney%20Croft%2C%20York%20YO10%204BX!5e0!3m2!1sen!2suk!4v1777393677728!5m2!1sen!2suk"></iframe>
+            <div class="address-info">
+                <p class="eyebrow">York Stay</p>
+                <h3>요크 숙소</h3>
+                <p>13 Browney Croft, York YO10 4BX</p>
+                <a class="map-link" href="https://maps.app.goo.gl/Xq3tWkRqSJQCzJkd8" target="_blank">구글 지도에서 크게 보기 ↗</a>
+            </div>
+        </div>
+
+        <div class="section-label"><h2>🗓 상세 일정</h2></div>
+
+        <section id="day14" class="day-section" data-city="york">
+            <div class="date-title">7월 14일 <span>York</span></div>
+            <div class="schedule-card">
+                <article class="spot-item">
+                <div class="spot-copy">
+                  <div class="time-box"><em>종일</em></div>
+                  <div class="desc-box"><strong>성곽길 걷기</strong><p>샴블스, 요크 민스터 등 시내 구경</p></div>
+                </div>
+                <div class="spot-map">
+                	<iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=York%20City%20Walls&output=embed"></iframe>
+                </div>
+                </article>
+                <article class="spot-item"><div class="spot-copy"><div class="time-box"><em>밤</em></div><div class="desc-box"><strong>Movie Night</strong><p>폭풍의 언덕 시청</p></div></div></article>
+            </div>
+        </section>
+
+        <section id="day15" class="day-section" data-city="york">
+		<div class="date-title">7월 15일 <span>Haworth</span></div>
+		<div class="schedule-card">
+			<article class="spot-item">
+				<div class="spot-copy">
+					<div class="time-box"><em>종일</em></div>
+					<div class="desc-box">
+						<strong>폭풍의 언덕 투어</strong>
+						<p>브론테 목사관 박물관 및 하워스 들판 방문</p>
+						<p>차로 대략 1시간 40분</p>
+					</div>					
+				</div>
+				<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=Bronte%20Parsonage%20Museum%20Haworth&output=embed"></iframe></div>
+			</article>
+		</div>
+	</section>
+        
+	<section id="day16" class="day-section" data-city="york">
+		<div class="date-title">7월 16일 <span>Doncaster</span></div>
+		<div class="schedule-card">
+			<article class="spot-item">
+				<div class="spot-copy">
+					<div class="time-box"><em>종일</em></div>
+					<div class="desc-box"><strong>돈캐스터 동물원</strong><p>차로 대략 1시간 10분</p></div>
+					</div><div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2373.3447017581607!2d-1.0323252235923994!3d53.498037563363134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48790f6d7e9a463b%3A0xb0cbffdc6cac3af3!2sYorkshire%20Wildlife%20Park!5e0!3m2!1sen!2suk!4v1777565646034!5m2!1sen!2suk""></iframe></div>
+			</article>
+			<article class="spot-item">
+				<div class="spot-copy">
+					<div class="time-box"><em>19:00</em></div>
+					<div class="desc-box"><strong>요크 대학교 저녁 산책</strong><p>학교 투어~</p></div>
+					</div><div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2348.191177882052!2d-1.054346723564415!3d53.94611202967905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487930324a78a6f3%3A0xe55ee181ddf91d18!2sUniversity%20of%20York!5e0!3m2!1sen!2suk!4v1777565765461!5m2!1sen!2suk"></iframe></div>
+			</article>
+		</div>
+	</section>
+
+        <section id="day17" class="day-section" data-city="york">
+		<div class="date-title">7월 17일 <span>York</span></div>
+		<div class="schedule-card">
+			<article class="spot-item">
+				<div class="spot-copy">
+					<div class="time-box"><em>종일</em></div>
+					<div class="desc-box">
+						<strong>로빈후드베이 휘트비</strong>
+						<p>로빈 후드 베이까지 드라이브(1시간 20분) + 피쉬 앤 칩스 먹기</p>
+						<p>Cleveland Way로 휘트비까지 하이킹(3시간 예상)</p>
+						<p>휘트비에서 버스타고(30분) 로빈후드 베이 와서 차 타고 숙소로</p>
+					</div>
+				</div>
+				<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4641.317195684317!2d-0.5415011028230491!3d54.433660730887794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487f161bb0c3dcd1%3A0x93246c122525e697!2sRobin%20Hood&#39;s%20Bay%2C%20Whitby!5e0!3m2!1sen!2suk!4v1777566346333!5m2!1sen!2suk"></iframe></div>
+			</article>
+		</div>
+	</section>
+
+        <section id="day18" class="day-section" data-city="york">
+		<div class="date-title">7월 18일 <span>York</span></div>
+		<div class="schedule-card">
+			<article class="spot-item">
+				<div class="spot-copy">
+					<div class="time-box"><em>종일</em></div>
+					<div class="desc-box">
+						<strong>피터래빗 생가</strong>
+						<p>차로 대략 3시간</p>
+					</div>
+				</div>
+				<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d596900.0234210279!2d-2.684291745890425!3d54.23954715305118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487c957b8ae5358d%3A0x4afc85377e9e664b!2sNational%20Trust%20-%20Hill%20Top%20Beatrix%20Potter%20House!5e0!3m2!1sen!2suk!4v1777566473853!5m2!1sen!2suk"></iframe></div>
+			</article>
+		</div>
+	</section>
+        
+	<section id="day19" class="day-section" data-city="york">
+		<div class="date-title">7월 19일 <span>York</span></div>
+		<div class="schedule-card">
+			<article class="spot-item">
+				<div class="spot-copy">
+					<div class="time-box"><em>종일</em></div>
+					<div class="desc-box">
+						<strong>Askham Bog 산책</strong>
+						<p>이모, 언니 한국 행</p>
+					</div>
+				</div>
+				<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2349.3204552293164!2d-1.1335649103282255!3d53.926050460197956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487930b7cb6f4617%3A0x4328848ba2a42b58!2sAskham%20Bog%20Nature%20Reserve!5e0!3m2!1sen!2suk!4v1777565893780!5m2!1sen!2suk" ></iframe></div>
+			</article>
+		</div>
+	</section>
+
+        <section id="day20" class="day-section" data-city="york">
+		<div class="date-title">7월 20일 <span>York</span></div>
+		<div class="schedule-card">
+			<article class="spot-item">
+				<div class="spot-copy">
+					<div class="time-box"><em>오전</em></div>
+					<div class="desc-box">
+						<strong>졸업식</strong>
+						<p>졸업식 참석</p>
+					</div>
+				</div>
+				<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=University%20of%20York&output=embed"></iframe></div>
+			</article>
+			<article class="spot-item">
+				<div class="spot-copy">
+					<div class="time-box"><em>오후</em></div>
+					<div class="desc-box">
+						<strong>마당에서 바베큐 파티</strong>
+						<p>🎉🕺🏻💃🏼🎶</p>
+					</div>
+				</div>
+				<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=University%20of%20York&output=embed"></iframe></div>
+			</article>
+		</div>
+	</section>
+        
+	<section id="day21" class="day-section" data-city="york">
+		<div class="date-title">7월 21일 <span>York → London → Seoul</span></div>
+		<div class="schedule-card">
+			<article class="spot-item">
+				<div class="spot-copy">
+					<div class="time-box"><em>종일</em></div>
+					<div class="desc-box">
+						<strong>✈️✈️마무리 일정✈️✈️</strong>
+						<p>한국으로~~</p>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+    </section>
+</main>
+
+<a id="mapFab" href="https://www.google.com/maps/search/?api=1&query=London%20UK" class="map-fab" target="_blank">📍 지도</a>
+
+<script>
+    const cityDefaultDay = { london: 'day11', york: 'day14' };
+    const cityMapLinks = {
+        london: 'https://www.google.com/maps/search/?api=1&query=London%20UK',
+        york: 'https://www.google.com/maps/search/?api=1&query=York%20UK'
+    };
+
+    function switchCity(city, shouldScroll = true) {
+        document.querySelectorAll('.city-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.city === city));
+        document.querySelectorAll('.city-section').forEach(section => section.classList.toggle('active', section.id === city));
+        document.querySelectorAll('.date-group').forEach(group => group.classList.toggle('active', group.dataset.city === city));
+        document.getElementById('mapFab').href = cityMapLinks[city];
+
+        const activeGroup = document.querySelector(`.date-group[data-city="${city}"]`);
+        activeGroup.querySelectorAll('.date-btn').forEach((btn, index) => btn.classList.toggle('active', index === 0));
+
+        if (shouldScroll) {
+            document.getElementById(city).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function scrollToDay(dayId) {
+        const element = document.getElementById(dayId);
+        if (!element) return;
+        const city = element.dataset.city;
+        if (!document.getElementById(city).classList.contains('active')) switchCity(city, false);
+
+        document.querySelectorAll(`.date-group[data-city="${city}"] .date-btn`).forEach(btn => btn.classList.remove('active'));
+        if (event && event.currentTarget) event.currentTarget.classList.add('active');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    window.addEventListener('scroll', () => {
+        const visibleCity = document.querySelector('.city-section.active');
+        if (!visibleCity) return;
+        const sections = visibleCity.querySelectorAll('.day-section');
+        const scrollPos = window.pageYOffset + 210;
+
+        sections.forEach(section => {
+            if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                const dayId = section.id;
+                const city = section.dataset.city;
+                document.querySelectorAll(`.date-group[data-city="${city}"] .date-btn`).forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('onclick').includes(dayId));
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
