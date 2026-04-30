@@ -43,7 +43,6 @@
         .schedule-card{padding:10px;} .spot-item{position:relative; display:grid; grid-template-columns:minmax(0,1fr) 310px; gap:14px; padding:10px; border-bottom:1px solid var(--line); border-radius:22px; transition:transform .2s ease,background .2s ease,box-shadow .2s ease;} .spot-item:hover{transform:translateY(-2px); background:rgba(255,255,255,.78); box-shadow:0 14px 30px rgba(15,23,42,.08);} .spot-item:last-child{border-bottom:0;}
         .spot-copy{display:grid; grid-template-columns:86px minmax(0,1fr); gap:16px; padding:18px 10px 18px 14px; align-items:start;} .time-box{font-weight:1000; color:var(--red); font-size:.92rem; text-align:center;} .time-box em{display:inline-flex; min-width:62px; justify-content:center; background:#fff1f3; border:1px solid rgba(228,61,79,.12); border-radius:999px; padding:9px 10px; font-style:normal; box-shadow:0 8px 18px rgba(228,61,79,.08);} .desc-box{border-left:0; padding-left:0;} .desc-box strong{display:block; font-size:1.16rem; margin-bottom:8px; color:#101828; letter-spacing:-.035em;} .desc-box p{margin:0; font-size:.94rem; color:var(--muted); line-height:1.62; font-weight:580;}
         .spot-map{overflow:hidden; border-radius:18px; min-height:168px; border:1px solid rgba(15,23,42,.08);} .spot-map iframe{height:100%; min-height:168px;}
-        .map-fab{position:fixed; right:20px; bottom:20px; min-width:76px; height:56px; border-radius:999px; background:linear-gradient(135deg,var(--navy),var(--blue)); color:white; display:flex; align-items:center; justify-content:center; box-shadow:0 18px 38px rgba(49,87,255,.32); text-decoration:none; font-size:.84rem; font-weight:950; z-index:1000; padding:0 16px; border:1px solid rgba(255,255,255,.26);}
         @media (max-width:800px){ header{padding:14px 16px 8px; align-items:flex-start;} header::after{display:none;} .city-tabs-container,.date-tabs-container{padding-left:16px;padding-right:16px;} .city-tabs-container{gap:8px;} .city-btn{padding:13px 12px;border-radius:17px;} .date-btn{min-height:39px;padding:9px 14px;font-size:.85rem;} .content{width:min(100% - 24px,560px);padding-top:18px;} .hero-card{grid-template-columns:1fr;padding:22px;min-height:unset;border-radius:26px;} .hero-card>.map-frame{min-height:220px;} .info-card{grid-template-columns:1fr;} .info-card .map-frame{min-height:210px;} .address-info{padding:26px;} .spot-item{grid-template-columns:1fr;gap:8px;} .spot-copy{grid-template-columns:72px 1fr;padding:14px 6px 10px;} .spot-map,.spot-map iframe{min-height:190px;} .section-label{margin-top:26px;} }
         .city-icons {
             display: grid;
@@ -194,8 +193,28 @@
         <section id="day12" class="day-section" data-city="london">
             <div class="date-title">7월 12일 <span>London</span></div>
             <div class="schedule-card">
-                <article class="spot-item"><div class="spot-copy"><div class="time-box"><em>12:00</em></div><div class="desc-box"><strong>Afternoon Tea</strong><p>먹고 나서 Hype Park 산책</p></div></div><div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=Westminster%20London&output=embed"></iframe></div></article>
-                <article class="spot-item"><div class="spot-copy"><div class="time-box"><em>15:00</em></div><div class="desc-box"><strong>The National Gallery</strong><p>모네 수련, 고흐 해바라기 있음</p><p>opt 1. 숙소로 가서 휴식</p><p>opt 2. 미술관 보고 바로 밥 먹으러 가기</p></div></div><div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=Afternoon%20Tea%20London&output=embed"></iframe></div></article>
+                <article class="spot-item">
+					<div class="spot-copy">
+						<div class="time-box"><em>12:00</em></div>
+						<div class="desc-box">
+							<strong>Afternoon Tea</strong>
+							<p>먹고 나서 Hype Park 산책</p>
+						</div>
+					</div>
+					<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d39727.17880601557!2d-0.1970469!3d51.5141576!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760ff7671ffe9d%3A0x89d9e45ab07f3004!2sCandella%20Tea%20Room!5e0!3m2!1sen!2suk!4v1777568759985!5m2!1sen!2suk"></iframe></div>
+				</article>
+                <article class="spot-item">
+					<div class="spot-copy">
+						<div class="time-box"><em>15:00</em></div>
+						<div class="desc-box">
+							<strong>The National Gallery</strong>
+							<p>모네 수련, 고흐 해바라기 있음</p>
+							<p>opt 1. 숙소로 가서 휴식</p>
+							<p>opt 2. 미술관 보고 바로 밥 먹으러 가기</p>
+						</div>
+					</div>
+					<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.2334850919333!2d-0.13087392312091994!3d51.50893231059109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604ce176ac979%3A0x42af85654e23a0b4!2sThe%20National%20Gallery!5e0!3m2!1sen!2suk!4v1777568593697!5m2!1sen!2suk"></iframe></div>
+				</article>
              	<article class="spot-item">
                     <div class="spot-copy"><div class="time-box"><em>19:30</em></div><div class="desc-box"><strong>Flat Iron에서 저녁 식사</strong><p>typical British Steak house</p><p>숙소에서 도보 35분</p></div></div>
                     <div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.985385767999!2d-0.09183980642089844!3d51.50417640000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603b9680dd387%3A0x5510fb4782ca0b0e!2sFlat%20Iron%20London%20Bridge!5e0!3m2!1sen!2suk!4v1777403019243!5m2!1sen!2suk"></iframe></div>
@@ -231,7 +250,7 @@
         <div class="hero-card">
             <div class="hero-copy">
                 <h2>York 일정</h2>
-                <p>준비물: 등산화, 등산복, formal한 복장, 즐거운 마음</p>
+                <p>준비물: 등산화, formal한 복장, 즐거운 마음</p>
                 <div class="hero-badges">
                     <span class="badge">7/14–7/21</span>
                     <span class="badge">Peter Rabbit</span>
@@ -387,7 +406,6 @@
 						<p>🎉🕺🏻💃🏼🎶</p>
 					</div>
 				</div>
-				<div class="spot-map"><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=University%20of%20York&output=embed"></iframe></div>
 			</article>
 		</div>
 	</section>
@@ -408,9 +426,6 @@
 	</section>
     </section>
 </main>
-
-<a id="mapFab" href="https://www.google.com/maps/search/?api=1&query=London%20UK" class="map-fab" target="_blank">📍 지도</a>
-
 <script>
     const cityDefaultDay = { london: 'day11', york: 'day14' };
     const cityMapLinks = {
@@ -422,7 +437,6 @@
         document.querySelectorAll('.city-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.city === city));
         document.querySelectorAll('.city-section').forEach(section => section.classList.toggle('active', section.id === city));
         document.querySelectorAll('.date-group').forEach(group => group.classList.toggle('active', group.dataset.city === city));
-        document.getElementById('mapFab').href = cityMapLinks[city];
 
         const activeGroup = document.querySelector(`.date-group[data-city="${city}"]`);
         activeGroup.querySelectorAll('.date-btn').forEach((btn, index) => btn.classList.toggle('active', index === 0));
